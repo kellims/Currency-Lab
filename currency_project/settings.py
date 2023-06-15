@@ -77,7 +77,8 @@ WSGI_APPLICATION = 'currency_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'world_currency',
+        'NAME': 'world_currency', 
+        
     }
 }
 
