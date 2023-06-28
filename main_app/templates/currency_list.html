@@ -6,6 +6,20 @@
 {% block content %}
 
 <h1 class="title pt-5">World Currency Collection</h1>
+
+<form class="mb-5" method="get">
+    <div class="field has-addons">
+      <div class="control">
+        
+        <input class="input" type="text" name="name" placeholder="name" />
+      </div>
+      <div class="control">
+        <input class="button is-success" type="submit" value="Search" />
+      </div>
+    </div>
+    <!--  This anchor tag will redirect back to artist list without a query param -->
+    <a class="button is-dark" href="{% url 'currency_list' %}">Clear Search</a>
+  </form>
 <div class="gallery">
   {% for currency in currencies %}
   <!-- <a href=""> -->
