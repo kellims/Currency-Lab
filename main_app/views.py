@@ -43,6 +43,8 @@ class CurrencyList(TemplateView):
         name = self.request.GET.get("name")
         if name != None:
             context["currencies"] = Currency.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
         else:
             context["currencies"] = Currency.objects.all()
+            context["header"] = "Currencies"
         return context
