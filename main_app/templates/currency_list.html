@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Currency{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">World Currency Collection</h1>
+<div class="gallery">
+  {% for currency in currencies %}
+  <!-- <a href=""> -->
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-square">
+          <img src="{{currency.image}}" alt="{{currency.name}}" />
+        </figure>
+      </div>
+      <div class="card-header">
+        <p class="card-header-title">{{currency.name}}</p>
+      </div>
+    </div>
+  </a>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No World Currencies Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
