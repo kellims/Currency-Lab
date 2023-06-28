@@ -10,3 +10,8 @@ class Home(View):
 
     def get(self, request):
         return HttpResponse("Currency Home")
+    
+class About(View):
+
+    def get(self, request):
+        return HttpResponse("Currency About Page")    
