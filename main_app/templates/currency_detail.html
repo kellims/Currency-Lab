@@ -11,6 +11,24 @@
     
   <div class="detail__money mb-5">
     <h3 class="title is-3">Money Collected</h3>
+    <form class="mb-5" action="{% url 'money_create' currency.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="type"
+                    placeholder="Type Of Currency"
+                    required
+                />
+            </div>
+        
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Add Money" />
+            </div>
+        </div>
+    </form>
 
     {% for money in currency.money.all %}
     <div class="money">

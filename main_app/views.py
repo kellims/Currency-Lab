@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import render
-from django.views import View #
+from django.views import View 
+from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 
-from .models import Currency
+from .models import Currency, Money
 
 # Create your views here.
 
@@ -79,3 +80,11 @@ class CurrencyDelete(DeleteView):
     model = Currency
     template_name = "currency_delete_confirmation.html"
     success_url = "/currency/"    
+
+class MoneyCreate(View):
+
+    def post(self, request, pk):
+        type = request.POST.get("type")
+        currency = Currency.objects.get(pk=pk)
+        Money.objects.create(type=type, currency=currency)
+        return redirect('currency_detail', pk=pk)    
