@@ -69,3 +69,22 @@ h3 {
 p {
     font-size: 12px;
 }
+
+.detail__money {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.money {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 0.1fr 3fr 1fr;
+    border-radius: 5px;
+}
+
+.money:hover {
+    background-color: hsla(0, 0%, 100%, 0.1);
+    cursor: pointer;
+}

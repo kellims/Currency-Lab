@@ -8,6 +8,25 @@
     <h1 class="title">{{currency.name}}</h1>
 </div>
 <div class="detail__container">
+    
+  <div class="detail__money mb-5">
+    <h3 class="title is-3">Money Collected</h3>
+
+    {% for money in currency.money.all %}
+    <div class="money">
+      <span>{{forloop.counter}}</span>
+      <span><b>{{money.type}}</b></span>
+    </div>
+		{% empty %}
+    <article class="message">
+      <div class="message-header">
+        <p>No Money Collected</p>
+      </div>
+    </article>
+
+    {% endfor %}
+  </div>
+
     <div class="buttons">
         <a href="{% url 'currency_update' currency.pk %}" class="button is-info">
             <span class="icon">
