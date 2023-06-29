@@ -1,4 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>World Currency Collector</h1>
+<div class="home__favorites">
+    {% for favorites in favorites %}
+
+        <div class="favorites mb-5">
+            <h3 class="title is-3 has-text-success">{{favorites.title}}</h3>
+            <hr />
+
+            {% for money in favorites.money.all %}
+
+                <div class="favorites">
+                    <span>{{forloop.counter}}</span>
+                    <span><b>{{money.type}}</b></span>
+                
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="playlist mb-5">"There is no money in this favorites list"</div>
+    {% endfor %}
+</div>
 {% endblock %}

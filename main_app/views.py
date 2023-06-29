@@ -8,7 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 
-from .models import Currency, Money
+from .models import Currency, Money, Favorites
 
 # Create your views here.
 
@@ -88,3 +88,12 @@ class MoneyCreate(View):
         currency = Currency.objects.get(pk=pk)
         Money.objects.create(type=type, currency=currency)
         return redirect('currency_detail', pk=pk)    
+    
+
+
+class Home(TemplateView):
+    template_name = "home.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorites"] = Favorites.objects.all()
+        return context
