@@ -97,3 +97,15 @@ class Home(TemplateView):
         context = super().get_context_data(**kwargs)
         context["favorites"] = Favorites.objects.all()
         return context
+    
+
+class FavoritesMoneyAssoc(View):
+
+    def get(self, request, pk, money_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Favorites.objects.get(pk=pk).money.remove(money_pk)
+        if assoc == "add":
+            Favorites.objects.get(pk=pk).money.add(money_pk)
+        return redirect('home')
+    
