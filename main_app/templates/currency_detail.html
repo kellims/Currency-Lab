@@ -10,7 +10,7 @@
 <div class="detail__container">
     
   <div class="detail__money mb-5">
-    <h3 class="title is-3">Money Collected</h3>
+    <h5 class="title is-3">Money Collected</h5>
     <form class="mb-5" action="{% url 'money_create' currency.pk %}" method="post">
         {% csrf_token %}
         <div class="field has-addons">
