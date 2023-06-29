@@ -21,3 +21,12 @@ class Money(models.Model):
 
     def __str__(self):
         return self.type
+
+
+class Favorites(models.Model):
+
+    title = models.CharField(max_length=150)
+    money = models.ManyToManyField(Money)
+
+    def __str__(self):
+        return self.title
