@@ -67,6 +67,11 @@ class CurrencyDetail(DetailView):
     model = Currency
     template_name = "currency_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorites"] = Favorites.objects.all()
+        return context
+
 
 class CurrencyUpdate(UpdateView):
     model = Currency

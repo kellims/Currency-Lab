@@ -34,6 +34,26 @@
     <div class="money">
       <span>{{forloop.counter}}</span>
       <span><b>{{money.type}}</b></span>
+      <span>
+        <div class="dropdown">
+            <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Add to Favorites list</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    {% for favorites in favorites %}
+                        <a href="{% url 'favorites_money_assoc' favorites.pk money.pk %}?assoc=add"
+                           class="dropdown-item">{{ favorites.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </span>
     </div>
 		{% empty %}
     <article class="message">
