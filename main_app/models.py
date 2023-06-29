@@ -12,3 +12,12 @@ class Currency(models.Model):
 
     class Meta:
         ordering = ['name']
+
+
+class Money(models.Model):
+
+    type = models.CharField(max_length=150)
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, related_name="money")
+
+    def __str__(self):
+        return self.type

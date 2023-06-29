@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.views import View #
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
+from django.urls import reverse
 
 from .models import Currency
 
@@ -55,4 +57,25 @@ class CurrencyCreate(CreateView):
     model = Currency
     fields = ['name', 'image', 'country']
     template_name = "currency_create.html"
-    success_url = "/currency/"
+    
+    def get_success_url(self):
+        return reverse('currency_detail', kwargs={'pk': self.object.pk})
+
+
+class CurrencyDetail(DetailView):
+    model = Currency
+    template_name = "currency_detail.html"
+
+
+class CurrencyUpdate(UpdateView):
+    model = Currency
+    fields = ['name', 'image', 'country']
+    template_name = "currency_update.html"
+    
+    def get_success_url(self):
+        return reverse('currency_detail', kwargs={'pk': self.object.pk})  
+    
+class CurrencyDelete(DeleteView):
+    model = Currency
+    template_name = "currency_delete_confirmation.html"
+    success_url = "/currency/"    
